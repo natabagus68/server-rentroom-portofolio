@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
-      Bookmark.belongsTo(models.User);
-      Bookmark.belongsTo(models.HotelData);
+      Like.belongsTo(models.User);
+      Like.belongsTo(models.HotelData);
     }
   }
   Like.init(
