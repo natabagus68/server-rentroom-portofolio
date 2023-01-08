@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      HotelData.belongsTo(models.User);
+      HotelData.hasMany(models.HotelRoom);
+      HotelData.hasMany(models.Bookmark);
+      HotelData.hasMany(models.Like);
     }
   }
   HotelData.init(
@@ -18,6 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       address: DataTypes.TEXT,
       image: DataTypes.TEXT,
       UserId: DataTypes.INTEGER,
+      city: DataTypes.STRING,
+      province: DataTypes.STRING,
     },
     {
       sequelize,
