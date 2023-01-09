@@ -24,12 +24,12 @@ exports.loginUser = async (req, res, next) => {
         });
       } else {
         throw {
-          name: "invalid password",
+          msg: "invalid password",
         };
       }
     } else {
       throw {
-        name: "invalid email",
+        msg: "invalid email",
       };
     }
   } catch (error) {

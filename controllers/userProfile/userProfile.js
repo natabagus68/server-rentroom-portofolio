@@ -31,7 +31,7 @@ exports.createProfile = async (req, res, next) => {
       });
       res.status(201).json({ message: "create profile success", data });
     } else {
-      throw { name: "already exists profile" };
+      throw { msg: "already exists profile" };
     }
   } catch (error) {
     next(error);

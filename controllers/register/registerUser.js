@@ -7,7 +7,7 @@ exports.registerUser = async (req, res, next) => {
     const userEmail = await User.findOne({ where: { email } });
 
     if (userEmail) {
-      throw { name: "already axists" };
+      throw { msg: "already axists" };
     } else {
       const data = await User.create({
         email,
@@ -17,7 +17,6 @@ exports.registerUser = async (req, res, next) => {
       res.status(201).json({ message: "register success", data });
     }
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
