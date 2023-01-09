@@ -1,4 +1,4 @@
-const { verifyToken } = require("../../helpers/jsonwebtoken");
+// const { verifyToken } = require("../../helpers/jsonwebtoken");
 const { HotelData } = require("../../models");
 
 exports.getDataHotel = async (req, res, next) => {
@@ -13,7 +13,7 @@ exports.getDataHotel = async (req, res, next) => {
 
 exports.addNewHotel = async (req, res, next) => {
   try {
-    const payload = verifyToken(req.headers.access_token);
+    const id = req.user.id;
     const { name, description, image, city, province } = req.body;
     const data = await HotelData.create({
       name,
@@ -21,7 +21,7 @@ exports.addNewHotel = async (req, res, next) => {
       image,
       city,
       province,
-      UserId: payload.id,
+      UserId: id,
     });
     res.status(201).json({ message: "create new hotel success", data });
   } catch (error) {

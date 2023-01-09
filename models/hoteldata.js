@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       HotelData.belongsTo(models.User);
-      HotelData.hasMany(models.HotelRoom);
-      HotelData.hasMany(models.Bookmark);
+      HotelData.hasMany(models.HotelRoom, { foreignKey: "HotelDataId" });
+      HotelData.hasMany(models.Bookmark, { foreignKey: "HotelDataId" });
       HotelData.hasMany(models.Like);
     }
   }

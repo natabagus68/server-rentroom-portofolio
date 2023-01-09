@@ -18,6 +18,9 @@ exports.errorHandler = (error, req, res, next) => {
   ) {
     code = 401;
     name = "Unauthorized";
+  } else if (error.msg === "not found") {
+    code = 404;
+    name = "Not Found";
   }
 
   res.status(code).json({ name, msg: error.msg });

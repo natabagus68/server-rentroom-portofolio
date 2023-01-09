@@ -6,10 +6,11 @@ exports.authentication = async (req, res, next) => {
     const { access_token } = req.headers;
     if (access_token) {
       const payload = verifyToken(access_token);
-
       const user = await User.findOne({ where: { id: payload.id } });
-      if (user) next(user);
-      else throw { msg: "invalide access_token" };
+      if (user) {
+        req.user = payload;
+        next();
+      } else throw { msg: "invalide access_token" };
     } else {
       throw { msg: "login first" };
     }

@@ -3,8 +3,8 @@ const {
   getDataHotel,
   addNewHotel,
 } = require("../../controllers/hotel/hotelData");
-const { authentication } = require("../../middlewares/auth");
+const { authentication, authoritation } = require("../../middlewares/auth");
 
 router.get("/", authentication, getDataHotel);
-router.post("/", authentication, addNewHotel);
+router.post("/", authentication, authoritation, addNewHotel);
 module.exports = router;
