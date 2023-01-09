@@ -11,6 +11,20 @@ exports.getDataHotel = async (req, res, next) => {
   }
 };
 
+exports.getDataHotelById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const data = await HotelData.findByPk(id);
+    if (data) {
+      res.status(200).json({ data });
+    } else {
+      throw { msg: "not found" };
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.addNewHotel = async (req, res, next) => {
   try {
     const id = req.user.id;
