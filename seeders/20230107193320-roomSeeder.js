@@ -5,7 +5,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     const data = [
       {
-        class: "Regular",
+        classRoom: "Regular",
         description: "kamar mandi dalam",
         bed: "single",
         wide: 16,
@@ -18,7 +18,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        class: "Regular",
+        classRoom: "Regular",
         description: "kamar mandi dalam",
         bed: "doble",
         wide: 16,
@@ -31,7 +31,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        class: "Delux",
+        classRoom: "Delux",
         description: "kamar mandi dalam",
         bed: "single",
         wide: 18,
@@ -44,7 +44,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        class: "Regular",
+        classRoom: "Regular",
         description: "kamar mandi dalam",
         bed: "single",
         wide: 16,
@@ -57,7 +57,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        class: "Delux",
+        classRoom: "Delux",
         description: "kamar mandi dalam",
         bed: "single",
         wide: 18,
@@ -70,7 +70,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        class: "Super Delux",
+        classRoom: "Super Delux",
         description: "kamar mandi dalam",
         bed: "single",
         wide: 20,

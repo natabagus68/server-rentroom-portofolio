@@ -14,7 +14,8 @@ exports.errorHandler = (error, req, res, next) => {
   } else if (
     error.msg === "invalide access_token" ||
     error.msg === "login first" ||
-    error.msg === "user cant add hotel"
+    error.msg === "user cant add hotel" ||
+    error.msg === "id hotel is not yours"
   ) {
     code = 401;
     name = "Unauthorized";
