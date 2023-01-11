@@ -7,7 +7,7 @@ const {
 const { authentication } = require("../../middlewares/auth");
 
 router.get("/", authentication, showBookmark);
-router.get("/:HotelDataId", authentication, addBookmark);
+router.post("/:HotelDataId", authentication, addBookmark);
 router.delete("/:id", authentication, destroyBookmark);
 
 module.exports = router;

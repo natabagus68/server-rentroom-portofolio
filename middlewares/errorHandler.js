@@ -20,7 +20,12 @@ exports.errorHandler = (error, req, res, next) => {
   } else if (error.name === "SequelizeValidationError") {
     name = "Error Validation";
     code = 400;
-    msg = error.errors;
+    msg = error.errors.map((e) => {
+      return {
+        message: e.message,
+        value: e.value,
+      };
+    });
   } else if (error.name === " Not Acceptable") {
     code = 406;
     name = error.name;
