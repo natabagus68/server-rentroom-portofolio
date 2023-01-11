@@ -52,25 +52,108 @@ _Response (201 - Created)_
 _Response (400 - Bad Request)_
 
 ```json
-{
+[{
   "message": "Email is required"
-}
+},
 OR
+
 {
   "message": "Invalid email format"
-}
+},
 OR
 {
-  "message": "Email must be unique"
-}
+  "message": "Already Exists"
+},
 OR
-{
-  "message": "Name is required"
-}
-OR
+
 {
   "message": "Password is required"
-}
+}]
 ```
 
 &nbsp;
+
+## 2. POST /login
+
+Request:
+
+- body:
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+_Response (200 - Created)_
+
+```json
+{
+  "message": "login success",
+  "access_token": "string"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+[{
+  "message": "Email is required"
+},
+OR
+
+{
+  "message": "Invalid email format"
+},
+OR
+{
+  "message": "Error login user not found"
+},
+OR
+
+{
+  "message": "Password is required"
+}]
+```
+
+## 3. POST /profiles
+
+Request:
+
+- body:
+
+```json
+{
+  "first_name": "string",
+  "last_name": "string",
+  "age": "integer",
+  "city": "string",
+  "province": "string",
+  "complete_address": "string",
+  "zipcode": "string"
+}
+```
+
+- headers:
+
+```json
+{ "access_token": "string" }
+```
+
+_Response (201 - Created)_
+
+```json
+{
+  "first_name": "string",
+  "last_name": "string",
+  "age": "integer",
+  "city": "string",
+  "province": "string",
+  "complete_address": "string",
+  "zipcode": "string",
+  "UserId": "integer"
+}
+```
+
+_Response (400 - Bad Request)_

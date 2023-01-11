@@ -14,14 +14,64 @@ module.exports = (sequelize, DataTypes) => {
   }
   UserProfile.init(
     {
-      first_name: DataTypes.STRING,
-      last_name: DataTypes.STRING,
-      age: DataTypes.INTEGER,
-      city: DataTypes.STRING,
-      province: DataTypes.STRING,
-      complete_address: DataTypes.TEXT,
-      zipcode: DataTypes.STRING,
-      UserId: DataTypes.INTEGER,
+      first_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "First Name is required" },
+        },
+      },
+      last_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Last Name is required" },
+        },
+      },
+      age: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Age is required" },
+          isInt: { msg: "Age must be Integer" },
+        },
+      },
+      city: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "City is required" },
+        },
+      },
+      province: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Province is required" },
+        },
+      },
+      complete_address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Address is required" },
+        },
+      },
+      zipcode: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Zipcode is required" },
+        },
+      },
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "UserId is required" },
+          isInt: { msg: "UserId must be Integer" },
+        },
+      },
     },
     {
       sequelize,
