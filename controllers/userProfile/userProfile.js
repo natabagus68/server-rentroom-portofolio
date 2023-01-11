@@ -3,7 +3,8 @@ const { verifyToken } = require("../../helpers/jsonwebtoken");
 
 exports.createProfile = async (req, res, next) => {
   try {
-    const payload = verifyToken(req.headers.access_token);
+    console.log("create profile");
+    const UserId = req.user.id;
     const {
       first_name,
       last_name,
@@ -15,7 +16,7 @@ exports.createProfile = async (req, res, next) => {
     } = req.body;
 
     const profile = await UserProfile.findOne({
-      where: { UserId: payload.id },
+      where: { UserId },
     });
 
     if (!profile) {
@@ -27,13 +28,14 @@ exports.createProfile = async (req, res, next) => {
         province,
         complete_address,
         zipcode,
-        UserId: payload.id,
+        UserId,
       });
       res.status(201).json({ message: "create profile success", data });
     } else {
-      throw { msg: "already exists profile" };
+      throw { name: "Already Exists" };
     }
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
@@ -45,7 +47,7 @@ exports.showProfile = async (req, res, next) => {
     if (data) {
       res.status(200).json({ data });
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);

@@ -1,28 +1,35 @@
 exports.errorHandler = (error, req, res, next) => {
   let name = "Internal Server Error";
   let code = 500;
-
-  if (error.msg == "invalid email" || error.msg == "invalid pasword") {
-    name = "bad request";
-    code = 400;
-  } else if (
-    error.msg === "already exists profile" ||
-    error.msg === "already axists"
-  ) {
-    name = "forbidden";
-    code = 403;
-  } else if (
-    error.msg === "invalide access_token" ||
-    error.msg === "login first" ||
-    error.msg === "user cant add hotel" ||
-    error.msg === "id hotel is not yours"
-  ) {
+  let msg = "";
+  if (error.name === "Error login user not found") {
     code = 401;
-    name = "Unauthorized";
-  } else if (error.msg === "not found") {
+    name = error.name;
+    msg = "invalid email or password";
+  } else if (
+    error.name === "Error user already exists" ||
+    error.name === "Already Exists"
+  ) {
+    code = 400;
+    msg = error.name;
+    name = "Bad Request";
+  } else if (error.name === "Not Found") {
     code = 404;
-    name = "Not Found";
+    name = error.name;
+    msg = "data not found!";
+  } else if (error.name === "SequelizeValidationError") {
+    name = "Error Validation";
+    code = 400;
+    msg = error.errors;
+  } else if (error.name === " Not Acceptable") {
+    code = 406;
+    name = error.name;
+    msg = error.message;
+  } else if (error.name === "Forbidden") {
+    code = 403;
+    name = error.name;
+    msg = error.message;
   }
 
-  res.status(code).json({ name, msg: error.msg });
+  res.status(code).json({ name, msg });
 };

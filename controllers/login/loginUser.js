@@ -24,12 +24,12 @@ exports.loginUser = async (req, res, next) => {
         });
       } else {
         throw {
-          msg: "invalid password",
+          name: "Error login user not found",
         };
       }
     } else {
       throw {
-        msg: "invalid email",
+        name: "Error login user not found",
       };
     }
   } catch (error) {

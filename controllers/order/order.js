@@ -20,7 +20,7 @@ exports.createOrder = async (req, res, next) => {
         amount,
       });
     } else {
-      throw { msg: "already exists" };
+      throw { name: "Already Exists" };
     }
     res.status(201).json({ message: "order hotel room created" });
   } catch (error) {
@@ -38,7 +38,7 @@ exports.showOrder = async (req, res, next) => {
     if (data) {
       res.status(200).json({ data });
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);
@@ -60,7 +60,7 @@ exports.showOrderById = async (req, res, next) => {
     if (data) {
       res.status(200).json({ data });
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);
@@ -78,7 +78,7 @@ exports.destroOrder = async (req, res, next) => {
 
       res.status(200).json({ message: "order deleted" });
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);

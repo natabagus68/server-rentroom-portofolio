@@ -4,6 +4,6 @@ const {
   showProfile,
 } = require("../../controllers/userProfile/userProfile");
 const { authentication } = require("../../middlewares/auth");
-router.post("/", authentication, createProfile);
 router.get("/", authentication, showProfile);
+router.post("/", authentication, createProfile);
 module.exports = router;

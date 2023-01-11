@@ -7,7 +7,7 @@ exports.registerUser = async (req, res, next) => {
     const userEmail = await User.findOne({ where: { email } });
 
     if (userEmail) {
-      throw { msg: "already axists" };
+      throw { name: "Error user already exists" };
     } else {
       const data = await User.create({
         email,

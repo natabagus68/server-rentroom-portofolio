@@ -18,7 +18,7 @@ exports.getDataHotelById = async (req, res, next) => {
     if (data) {
       res.status(200).json({ data });
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);

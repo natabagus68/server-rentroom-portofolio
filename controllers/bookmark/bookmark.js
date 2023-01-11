@@ -11,6 +11,8 @@ exports.showBookmark = async (req, res, next) => {
 
     if (data) {
       res.status(200).json({ data });
+    } else {
+      throw { name: "Not Found" };
     }
   } catch (error) {
     console.log(error);
@@ -38,7 +40,7 @@ exports.addBookmark = async (req, res, next) => {
       });
     } else {
       throw {
-        msg: "already axists",
+        name: "Already Exists",
       };
     }
   } catch (error) {
@@ -57,7 +59,7 @@ exports.destroyBookmark = async (req, res, next) => {
       });
       res.status(200).json({ message: "deleted" });
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);

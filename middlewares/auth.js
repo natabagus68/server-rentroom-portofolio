@@ -10,9 +10,9 @@ exports.authentication = async (req, res, next) => {
       if (user) {
         req.user = payload;
         next();
-      } else throw { msg: "invalide access_token" };
+      } else throw { message: "invalid access_token", name: "Forbidden" };
     } else {
-      throw { msg: "login first" };
+      throw { message: "login first", name: "Forbidden" };
     }
   } catch (error) {
     next(error);
@@ -23,7 +23,7 @@ exports.authoritation = async (req, res, next) => {
   try {
     const role = req.user.role;
     if (role === "admin") next();
-    else throw { msg: "user cant add hotel" };
+    else throw { name: "Forbidden", message: "only admin can add and update" };
   } catch (error) {
     next(error);
   }

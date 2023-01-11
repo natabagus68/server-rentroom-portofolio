@@ -6,7 +6,7 @@ exports.getDataRoom = async (req, res, next) => {
     if (data) {
       res.status(200).json({ data });
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);
@@ -51,7 +51,10 @@ exports.addRoom = async (req, res, next) => {
 
       res.status(201).json({ message: "create hotel room success", data });
     } else {
-      throw { msg: "id hotel is not yours" };
+      throw {
+        name: "Not Acceptable",
+        message: `hotel id ${HotelDataId} isn't yours`,
+      };
     }
   } catch (error) {
     next(error);
@@ -61,7 +64,6 @@ exports.addRoom = async (req, res, next) => {
 exports.editHotelRoom = async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log(id, "id");
     const {
       classRoom,
       description,
@@ -109,7 +111,7 @@ exports.deleteHotelRoom = async (req, res, next) => {
       });
       res.status(200).json("deleted");
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);
@@ -123,7 +125,7 @@ exports.getDataRoomById = async (req, res, next) => {
     if (data) {
       res.status(200).json({ data });
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);

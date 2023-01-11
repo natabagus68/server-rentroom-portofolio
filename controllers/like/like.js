@@ -39,7 +39,7 @@ exports.createLike = async (req, res, next) => {
         res.status(201).json({ message: "create like success", data });
       }
     } else {
-      throw { msg: "not found" };
+      throw { name: "Not Found" };
     }
   } catch (error) {
     next(error);
