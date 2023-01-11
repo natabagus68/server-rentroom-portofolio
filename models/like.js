@@ -9,9 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-
       Like.belongsTo(models.User);
-      Like.belongsTo(models.HotelData);
+      Like.belongsTo(models.HotelData, {
+        as: "hoteldata",
+        foreignKey: "HotelDataId",
+      });
     }
   }
   Like.init(

@@ -31,7 +31,21 @@ exports.createProfile = async (req, res, next) => {
       });
       res.status(201).json({ message: "create profile success", data });
     } else {
-      throw { name: "already exists profile" };
+      throw { msg: "already exists profile" };
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.showProfile = async (req, res, next) => {
+  try {
+    const id = req.user.id;
+    const data = await UserProfile.findOne({ where: { UserId: id } });
+    if (data) {
+      res.status(200).json({ data });
+    } else {
+      throw { msg: "not found" };
     }
   } catch (error) {
     next(error);

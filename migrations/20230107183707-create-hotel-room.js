@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      class: {
+      classRoom: {
         type: Sequelize.STRING,
       },
       description: {
