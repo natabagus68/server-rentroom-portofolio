@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Bookmark);
       User.hasMany(models.Like);
       User.hasMany(models.Order);
+
+      User.belongsToMany(models.HotelData, {
+        through: models.Like,
+        foreignKey: "UserId",
+        otherKey: "HotelDataId",
+      });
     }
   }
   User.init(
